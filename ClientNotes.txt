@@ -1,0 +1,31 @@
+Client
+
+conn = makeConnection();
+
+host => code = makeNewGame(gameSettings(#players, cards, turns))
+
+player => joinCode(code)
+
+All players hit ready
+
+Host Starts game
+
+Start Rounds
+
+// LOOP
+Recieve cards
+Ready up for Rounds
+See card for 5 seconds then turn dark
+Tell server card viewing is done and ready for instructions
+
+"Sleep" in dark / night
+
+Receive direction from server
+for all directions in round
+if directionCharacter == myCharacter => do direction
+else Sleep
+end directions loop
+
+Wake up
+Timer discuss
+Send vote to server (non-vote counts as self-vote)

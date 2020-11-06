@@ -1,0 +1,8 @@
+Server
+Create global List (HashMap?) of games <Long gameID, Game game>
+
+
+conn = recieveConnection(host)
+add host to hostsList
+
+Create game and generate / return game code
