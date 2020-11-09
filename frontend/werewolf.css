@@ -2,13 +2,15 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    border: none;
+    text-align: center;
 }
 
 input:focus, button:focus {
     outline: none;
 }
 
-button:hover {
+button:hover, input:hover {
     cursor: pointer;
 }
 
@@ -17,7 +19,190 @@ button:hover {
     min-height: 100%;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(39, 39, 39);
+}
+
+/*
+    LANDING
+*/
+#landing-container {
+    width: 60%;
+    height: fit-content;
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    background-color: rgb(26, 26, 26);
+    background-color: rgb(233, 233, 233);
+    border-radius: .8rem;
+    border: 2px solid white;
+    padding: 1rem;
+    background-image: url('resources/fur.jpg');
+    display: none;
+}
+
+#werewolf-title {
+    font-size: 4rem;
+    color: rgb(252, 252, 252);
+}
+
+#landing-connect-container {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+#landing-username-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.landing-label {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: rgb(255, 255, 255);
+    border-radius: .5rem .5rem 0 0;
+}
+
+.landing-input {
+    width: 100%;
+    border-radius: .5rem;
+    padding: .5rem;
+    background-color: rgb(224, 224, 224);
+    font-size: 1.3rem;
+    border: 2px solid black;
+}
+
+#landing-create-game-button {
+    width: 100%;
+    padding: 1rem;
+    border-radius: .5rem;
+    font-size: 1.5rem;
+    background-color: rgb(0, 0, 0);
+    color: white;
+    border: 3px solid rgb(0, 0, 0);
+}
+
+#landing-create-game-button:hover {
+    border: 3px solid white;
+}
+
+#landing-join-game-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#landing-join-game-button {
+    width: 100%;
+    padding: .2rem;
+    border-radius: .5rem;
+    font-size: 1.5rem;
+    margin-top: .5rem;
+    background-color: rgb(55, 83, 121);
+    color: white;
+    border: 2px solid rgb(0, 0, 0);
+}
+
+#landing-join-game-button:hover {
+    border: 2px solid rgb(255, 255, 255);
+}
+
+.landing-error-message {
+    color: red;
+    display: none;
+}
+
+/*
+    CREATE GAME
+*/
+#create-game-container {
+    width: 60%;
+    height: fit-content;
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    border: 2px solid green;
+}
+
+#create-num-players-container {
+    margin: 1rem;
+}
+
+#create-characters-container {
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#create-num-label {
+    color: white;
+}
+
+.create-character-image {
+    width: 22vmin;
+    height: 22vmin;
+    border: 2px solid white;
+    margin: .2rem .1rem;
+}
+
+#create-game-button {
+    width: 100%;
+    padding: .8rem;
+    margin: 2rem 0;
+    border-radius: .2rem;
+}
+
+
+/*
+    PRE GAME
+*/
+#pregame-lobby-container {
+
+}
+
+
+/*
+    GAME
+*/
+#game-container {
+
+}
+
+
+/*
+    NIGHT GAME
+*/
+#night-container {
+
+}
+
+@media screen and (max-width: 900px) {
+    #landing-container {
+        width: 90vw;
+        min-height: 90vh;
+    }
+
+    #landing-connect-container {
+        width: 99%;
+    }
+
+    #create-game-container {
+        width: 95%;
+        height: fit-content;
+    }
 }

@@ -16,7 +16,72 @@
 </head>
 <body>
     <div id="content">
-        
+        <div id="landing-container">
+            <h1 id="werewolf-title">Werewolf</h1>
+            <div id="landing-connect-container">
+                <div id="landing-username-container">
+                    <label for="landing-username-input" class="landing-label">Username:</label>
+                    <input type="text" class="landing-input" id="landing-username-input">
+                    <p class="landing-error-message" id="landing-username-invalid-error">Username must be 1-10 characters</p>
+                </div>
+                <div id="landing-join-game-container">
+                    <label for="landing-join-game-input" class="landing-label">Game Code:</label>
+                    <input type="text" class="landing-input" id="landing-join-game-input">
+                    <p class="landing-error-message" id="landing-code-invalid-error">Invalid game code</p>
+                    <button id="landing-join-game-button">Join Game</button>
+                </div>
+                <button id="landing-create-game-button">Create new game</button>
+            </div>
+        </div>
+        <div id="create-game-container">
+            <div id="create-num-players-container">
+                <label for="create-num-input" id="create-num-label">Number of Players: </label>
+                <select name="create-num-input" id="create-num-input">
+                    <option value="3" id="create-num-3">3</option>
+                    <option value="4" id="create-num-4">4</option>
+                    <option value="5" id="create-num-5">5</option>
+                    <option value="6" id="create-num-6">6</option>
+                    <option value="7" id="create-num-7">7</option>
+                    <option value="8" id="create-num-8">8</option>
+                    <option value="9" id="create-num-9">9</option>
+                    <option value="10" id="create-num-10">10</option>
+                    <option value="11" id="create-num-11">11</option>
+                    <option value="12" id="create-num-12">12</option>
+                    <option value="13" id="create-num-13">13</option>
+                    <option value="14" id="create-num-14">14</option>
+                    <option value="15" id="create-num-15">15</option>
+                    <option value="16" id="create-num-16">16</option>
+                </select>
+            </div>
+            <div id="create-characters-container">
+                <img src="resources/characters/werewolf.png" alt="Werewolf character image" class="create-character-image create-werewolf" id="werewolf-1">
+                <img src="resources/characters/werewolf.png" alt="Werewolf character image" class="create-character-image create-werewolf" id="werewolf-2">
+                <img src="resources/characters/villager.png" alt="Villager character image" class="create-character-image create-villager" id="villager-1">
+                <img src="resources/characters/villager.png" alt="Villager character image" class="create-character-image create-villager" id="villager-2">
+                <img src="resources/characters/villager.png" alt="Villager character image" class="create-character-image create-villager" id="villager-3">
+                <img src="resources/characters/doppelganger.png" alt="Doppelganger character image" class="create-character-image create-doppelganger" id="doppelganger-1">
+                <img src="resources/characters/minion.png" alt="Minion character image" class="create-character-image create-minion" id="minion-1">
+                <img src="resources/characters/mason.png" alt="Mason character image" class="create-character-image create-mason" id="mason-1">
+                <img src="resources/characters/mason.png" alt="Mason character image" class="create-character-image create-mason" id="mason-2">
+                <img src="resources/characters/seer.png" alt="Seer character image" class="create-character-image create-seer" id="seer-1">
+                <img src="resources/characters/robber.png" alt="Robber character image" class="create-character-image create-robber" id="robber-1">
+                <img src="resources/characters/troublemaker.png" alt="Troublemaker character image" class="create-character-image create-troublemaker" id="troublemaker-1">
+                <img src="resources/characters/drunk.png" alt="Drunk character image" class="create-character-image create-drunk" id="drunk-1">
+                <img src="resources/characters/insomniac.png" alt="Insomniac character image" class="create-character-image create-insomniac" id="insomniac-1">
+                <img src="resources/characters/hunter.png" alt="Hunter character image" class="create-character-image create-hunter" id="hunter-1">
+                <img src="resources/characters/tanner.png" alt="Tanner character image" class="create-character-image create-tanner" id="tanner-1">
+            </div>
+            <button id="create-game-button">Create Game</button>
+        </div>
+        <div id="pregame-lobby-container">
+
+        </div>
+        <div id="game-container">
+
+        </div>
+        <div id="night-container">
+
+        </div>
     </div>
 </body>
 </html>
