@@ -5,7 +5,9 @@ import com.JohnBurnsDev.Werewolf.Model.Player;
 import com.JohnBurnsDev.Werewolf.Service.GameService;
 import com.JohnBurnsDev.Werewolf.Storage.GameList;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.messaging.handler.annotation.DestinationVariable;
+import org.springframework.messaging.handler.annotation.Header;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.messaging.simp.SimpMessageHeaderAccessor;
@@ -21,27 +23,30 @@ public class GameController {
     @Autowired
     GameService gameService;
 
+    @MessageMapping("/connect")
+    public void playerConnect(@Header("simpSessionId") String sessionID) throws Exception {
+        gameService.playerConnect(sessionID);
+        System.out.println("Connected to player "+sessionID);
+    }
+
     @MessageMapping("/game/create")
-    public void createGame(@Payload Game game, SimpMessageHeaderAccessor headerAccessor) throws Exception {
-        String sessionId = headerAccessor.getSessionAttributes().get("sessionID").toString();
-        Player player = new Player(sessionId, game.getHost().getUsername());
-        game.setHost(player);
-        game.addPlayer(player);
+    public void createGame(@Payload Game game, @Header("simpSessionId") String sessionID) throws Exception {
         System.out.println("Creating game for host: "+game.getHost().getUsername()+
-                " ("+game.getHost().getSessionID()+")");
-        gameService.createGame(game);
+                " ("+sessionID+")");
+        gameService.createGame(sessionID, game);
     }
 
     @MessageMapping("/game/join/{gameCode}")
-    public void joinGame(@DestinationVariable String gameCode, @Payload Game game,
-                         SimpMessageHeaderAccessor headerAccessor) throws Exception {
-        String sessionId = headerAccessor.getSessionAttributes().get("sessionId").toString();
-        Player player = new Player(sessionId, game.getHost().getUsername());
-        game.setHost(player);
-        game.addPlayer(player);
-        System.out.println("Creating game for host: "+game.getHost().getUsername()+
-                " ("+game.getHost().getSessionID()+")");
-        gameService.createGame(game);
+    public void joinGame(@DestinationVariable String gameCode, @Payload Player player,
+                         @Header("simpSessionId") String sessionID) throws Exception {
+        System.out.println("Joining Player("+player.getUsername()+") to Game("+gameCode+")");
+        gameService.joinGame(gameCode, player, sessionID);
+    }
+
+    @MessageMapping("/game/{gameCode}/ready")
+    public void pregameReady(@DestinationVariable String gameCode,
+                             @Header("simpSessionId") String sessionID) throws Exception {
+        gameService.ready(gameCode, sessionID);
     }
 
     @GetMapping("/fetchAllGames")

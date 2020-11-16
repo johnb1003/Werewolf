@@ -40,21 +40,4 @@ public class StompEventListener {
     private void handleSessionUnsubscribeEvent(SessionUnsubscribeEvent event) {
         //System.out.println("Session Unsubscribe: "+event.getSource().toString());
     }
-
-    public class HttpHandshakeInterceptor implements HandshakeInterceptor {
-
-        @Override
-        public boolean beforeHandshake(ServerHttpRequest request, ServerHttpResponse response, WebSocketHandler wsHandler,
-                                       Map attributes) throws Exception {
-            if (request instanceof ServletServerHttpRequest) {
-                ServletServerHttpRequest servletRequest = (ServletServerHttpRequest) request;
-                HttpSession session = servletRequest.getServletRequest().getSession();
-                attributes.put("sessionID", session.getId());
-            }
-            return true;
-        }
-
-        public void afterHandshake(ServerHttpRequest request, ServerHttpResponse response, WebSocketHandler wsHandler, Exception ex) {
-        }
-    }
 }

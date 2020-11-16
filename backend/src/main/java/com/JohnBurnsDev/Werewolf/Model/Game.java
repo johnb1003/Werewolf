@@ -13,6 +13,9 @@ public class Game {
     @Nullable
     private ArrayList<ChatMessage> chat;
     private ArrayList<CharacterType> characters;
+    private CharacterType[] middleCards;
+    private boolean pregame;
+    private boolean cardsDealt;
 
     public Game() {
 
@@ -43,8 +46,40 @@ public class Game {
         this.players = players;
     }
 
-    public void addPlayer(Player player) {
-        this.players.add(player);
+    public String addPlayer(Player player) {
+        String added;
+        if(this.players.size() >= this.characters.size()-3) {
+            added = null;
+        }
+        else {
+            this.players.add(player);
+            added = this.gameCode;
+        }
+        return added;
+    }
+
+    public void playerReady(String playerID, boolean ready) {
+        for(int i=0; i<this.players.size(); i++) {
+            if(this.players.get(i).getSessionID().equals(playerID)) {
+                this.players.get(i).setReady(ready);
+                break;
+            }
+        }
+    }
+
+    public boolean allReady() {
+        for(int i=0; i<this.players.size(); i++) {
+            if(!this.players.get(i).isReady()) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public void unreadyAll() {
+        for(int i=0; i<this.players.size(); i++) {
+            this.players.get(i).setReady(false);
+        }
     }
 
     @Nullable
@@ -62,5 +97,44 @@ public class Game {
 
     public void setCharacters(ArrayList<CharacterType> characters) {
         this.characters = characters;
+    }
+
+    public CharacterType[] getMiddleCards() {
+        return middleCards;
+    }
+
+    public void setMiddleCards(CharacterType[] middleCards) {
+        this.middleCards = middleCards;
+    }
+
+    public boolean isPregame() {
+        return pregame;
+    }
+
+    public void setPregame(boolean pregame) {
+        this.pregame = pregame;
+    }
+
+    public boolean cardsDealt() {
+        return cardsDealt;
+    }
+
+    public void setCardsDealt(boolean cardsDealt) {
+        this.cardsDealt = cardsDealt;
+    }
+
+    public void dealCards() {
+        ArrayList<CharacterType> tempCards = new ArrayList(this.characters);
+        for(int i=0; i<this.players.size(); i++) {
+            int randomIndex = (int)Math.floor(Math.random() * tempCards.size());
+            this.players.get(i).setCharacter(tempCards.remove(randomIndex));
+        }
+        this.setMiddleCards(tempCards.toArray(new CharacterType[0]));
+        this.pregame = false;
+        this.cardsDealt = true;
+    }
+
+    public boolean isFull() {
+        return this.players.size() >= this.characters.size() - 3;
     }
 }

@@ -6,13 +6,14 @@ public class Player {
     private String username;
     @Nullable
     private String sessionID;
-
     private boolean isReady;
+    private CharacterType character;
 
     public Player(String sessionID, String name) {
         this.sessionID = sessionID;
         this.username = name;
         this.isReady = false;
+        this.character = null;
     }
 
     public String getSessionID() {
@@ -37,5 +38,13 @@ public class Player {
 
     public void setReady(boolean ready) {
         isReady = ready;
+    }
+
+    public CharacterType getCharacter() {
+        return character;
+    }
+
+    public void setCharacter(CharacterType character) {
+        this.character = character;
     }
 }

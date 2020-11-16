@@ -48,33 +48,41 @@
                     <option value="11" id="create-num-11">11</option>
                     <option value="12" id="create-num-12">12</option>
                     <option value="13" id="create-num-13">13</option>
-                    <option value="14" id="create-num-14">14</option>
-                    <option value="15" id="create-num-15">15</option>
-                    <option value="16" id="create-num-16">16</option>
                 </select>
             </div>
             <div id="create-characters-container">
-                <img src="resources/characters/werewolf.png" alt="Werewolf character image" class="create-character-image create-werewolf" id="werewolf-1">
-                <img src="resources/characters/werewolf.png" alt="Werewolf character image" class="create-character-image create-werewolf" id="werewolf-2">
-                <img src="resources/characters/villager.png" alt="Villager character image" class="create-character-image create-villager" id="villager-1">
-                <img src="resources/characters/villager.png" alt="Villager character image" class="create-character-image create-villager" id="villager-2">
-                <img src="resources/characters/villager.png" alt="Villager character image" class="create-character-image create-villager" id="villager-3">
-                <img src="resources/characters/doppelganger.png" alt="Doppelganger character image" class="create-character-image create-doppelganger" id="doppelganger-1">
-                <img src="resources/characters/minion.png" alt="Minion character image" class="create-character-image create-minion" id="minion-1">
-                <img src="resources/characters/mason.png" alt="Mason character image" class="create-character-image create-mason" id="mason-1">
-                <img src="resources/characters/mason.png" alt="Mason character image" class="create-character-image create-mason" id="mason-2">
-                <img src="resources/characters/seer.png" alt="Seer character image" class="create-character-image create-seer" id="seer-1">
-                <img src="resources/characters/robber.png" alt="Robber character image" class="create-character-image create-robber" id="robber-1">
-                <img src="resources/characters/troublemaker.png" alt="Troublemaker character image" class="create-character-image create-troublemaker" id="troublemaker-1">
-                <img src="resources/characters/drunk.png" alt="Drunk character image" class="create-character-image create-drunk" id="drunk-1">
-                <img src="resources/characters/insomniac.png" alt="Insomniac character image" class="create-character-image create-insomniac" id="insomniac-1">
-                <img src="resources/characters/hunter.png" alt="Hunter character image" class="create-character-image create-hunter" id="hunter-1">
-                <img src="resources/characters/tanner.png" alt="Tanner character image" class="create-character-image create-tanner" id="tanner-1">
+                <img src="resources/characters/werewolf.png" alt="Werewolf character image" class="create-character-image WEREWOLF" id="werewolf-1">
+                <img src="resources/characters/werewolf.png" alt="Werewolf character image" class="create-character-image WEREWOLF" id="werewolf-2">
+                <img src="resources/characters/villager.png" alt="Villager character image" class="create-character-image VILLAGER" id="villager-1">
+                <img src="resources/characters/villager.png" alt="Villager character image" class="create-character-image VILLAGER" id="villager-2">
+                <img src="resources/characters/villager.png" alt="Villager character image" class="create-character-image VILLAGER" id="villager-3">
+                <img src="resources/characters/doppelganger.png" alt="Doppelganger character image" class="create-character-image DOPPELGANGER" id="doppelganger-1">
+                <img src="resources/characters/minion.png" alt="Minion character image" class="create-character-image MINION" id="minion-1">
+                <img src="resources/characters/mason.png" alt="Mason character image" class="create-character-image MASON" id="mason-1">
+                <img src="resources/characters/mason.png" alt="Mason character image" class="create-character-image MASON" id="mason-2">
+                <img src="resources/characters/seer.png" alt="Seer character image" class="create-character-image SEER" id="seer-1">
+                <img src="resources/characters/robber.png" alt="Robber character image" class="create-character-image ROBBER" id="robber-1">
+                <img src="resources/characters/troublemaker.png" alt="Troublemaker character image" class="create-character-image TROUBLEMAKER" id="troublemaker-1">
+                <img src="resources/characters/drunk.png" alt="Drunk character image" class="create-character-image DRUNK" id="drunk-1">
+                <img src="resources/characters/insomniac.png" alt="Insomniac character image" class="create-character-image INSOMNIAC" id="insomniac-1">
+                <img src="resources/characters/hunter.png" alt="Hunter character image" class="create-character-image HUNTER" id="hunter-1">
+                <img src="resources/characters/tanner.png" alt="Tanner character image" class="create-character-image TANNER" id="tanner-1">
             </div>
+            <p id="create-characters-warning">Must select 6 characters</p>
             <button id="create-game-button">Create Game</button>
         </div>
         <div id="pregame-lobby-container">
-
+            <div id="pregame-lobby-stats">
+                <h1 id="pregame-code"></h1>
+                <h1 id="pregame-num-players">Waiting for players...</h1>
+            </div>
+            <div id="pregame-players-container">
+                
+            </div>
+            <div id="pregame-button-container">
+                <button class="pregame-button" id="pregame-start-button">Start Game</button>
+                <button class="pregame-button" id="pregame-leave-button">Leave</button>
+            </div>
         </div>
         <div id="game-container">
 
