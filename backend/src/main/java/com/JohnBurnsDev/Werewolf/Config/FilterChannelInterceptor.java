@@ -14,17 +14,17 @@ import javax.security.sasl.AuthenticationException;
 public class FilterChannelInterceptor implements ChannelInterceptor {
     @Override
     public Message<?> preSend(Message<?> message, MessageChannel channel){
-        System.out.println("Presend");
+        //System.out.println("Presend");
         StompHeaderAccessor headerAccessor= StompHeaderAccessor.wrap(message);
         if (StompCommand.SUBSCRIBE.equals(headerAccessor.getCommand())) {
 
-            System.out.println(headerAccessor.getSessionId()+" subscribing to: "+headerAccessor.getDestination());
+            //System.out.println(headerAccessor.getSessionId()+" subscribing to: "+headerAccessor.getDestination());
             String gameCode = extractGameCode(headerAccessor.getDestination());
             if(gameCode != null) {
-                System.out.println("Game Code: "+gameCode);
-                if(GameList.getInstance().getGames().get(gameCode).isFull()) {
+                if(!GameList.getInstance().getGames().containsKey(gameCode) ||
+                        GameList.getInstance().getGames().get(gameCode).isFull()) {
                     // PREVENT SUBSCRIPTION
-                    throw new IllegalArgumentException("Can't join game - Lobby is full.");
+                    return null;
                 }
             }
         }
@@ -38,5 +38,14 @@ public class FilterChannelInterceptor implements ChannelInterceptor {
             return destination.substring(gameDestination.length());
         }
         return null;
+    }
+
+    @Override
+    public void postSend(Message<?> message, MessageChannel channel, boolean sent){
+        //System.out.println("Presend");
+        StompHeaderAccessor headerAccessor= StompHeaderAccessor.wrap(message);
+        if (sent) {
+            //System.out.println(headerAccessor.getSessionId() + " accepted");
+        }
     }
 }

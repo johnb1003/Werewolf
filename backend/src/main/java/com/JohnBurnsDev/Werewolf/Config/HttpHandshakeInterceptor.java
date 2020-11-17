@@ -18,13 +18,13 @@ public class HttpHandshakeInterceptor implements HandshakeInterceptor {
     @Override
     public boolean beforeHandshake(ServerHttpRequest request, ServerHttpResponse response, WebSocketHandler wsHandler,
                                    Map attributes) throws Exception {
-        System.out.println("Handshake");
+        //System.out.println("Handshake");
         if (request instanceof ServletServerHttpRequest) {
             ServletServerHttpRequest servletRequest = (ServletServerHttpRequest) request;
             HttpSession session = servletRequest.getServletRequest().getSession();
             attributes.put("sessionID", session.getId());
             Enumeration<String> attribs = session.getAttributeNames();
-            System.out.println("Handshake Interceptor: SessionID = "+ session.getId());
+            //System.out.println("Handshake Interceptor: SessionID = "+ session.getId());
         }
         return true;
     }

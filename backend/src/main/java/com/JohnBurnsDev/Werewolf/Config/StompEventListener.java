@@ -1,5 +1,7 @@
 package com.JohnBurnsDev.Werewolf.Config;
 
+import com.JohnBurnsDev.Werewolf.Service.GameService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.event.EventListener;
 import org.springframework.http.server.ServerHttpRequest;
 import org.springframework.http.server.ServerHttpResponse;
@@ -19,15 +21,19 @@ import java.util.Map;
 @Component
 public class StompEventListener {
 
+    @Autowired
+    GameService gameService;
+
     @EventListener
     private void handleSessionConnected(SessionConnectEvent event) {
         StompHeaderAccessor sha = StompHeaderAccessor.wrap(event.getMessage());
-        //System.out.println("Connected: " + sha.getLogin() + " - "+sha.getSessionId());
+        //System.out.println("Connected: "+sha.getSessionId());
     }
 
     @EventListener
     private void handleSessionDisconnect(SessionDisconnectEvent event) {
         StompHeaderAccessor sha = StompHeaderAccessor.wrap(event.getMessage());
+        gameService.removePlayer(sha.getSessionId());
         //System.out.println("Disconnected: " + sha.getSessionId());
     }
 

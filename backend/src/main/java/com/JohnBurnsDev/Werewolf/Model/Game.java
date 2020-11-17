@@ -16,6 +16,7 @@ public class Game {
     private CharacterType[] middleCards;
     private boolean pregame;
     private boolean cardsDealt;
+    private boolean isLive;
 
     public Game() {
 
@@ -56,6 +57,16 @@ public class Game {
             added = this.gameCode;
         }
         return added;
+    }
+
+    public Game removePlayer(String playerID) {
+        for(int i=0; i<this.players.size(); i++) {
+            if(this.players.get(i).getSessionID().equals(playerID)) {
+                this.players.remove(i);
+                break;
+            }
+        }
+        return this;
     }
 
     public void playerReady(String playerID, boolean ready) {
@@ -136,5 +147,13 @@ public class Game {
 
     public boolean isFull() {
         return this.players.size() >= this.characters.size() - 3;
+    }
+
+    public boolean isLive() {
+        return isLive;
+    }
+
+    public void setLive(boolean live) {
+        isLive = live;
     }
 }

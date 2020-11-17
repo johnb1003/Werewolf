@@ -26,4 +26,8 @@ public class GameList {
     public void updateGame(String gameCode, Game game) {
         games.put(gameCode, game);
     }
+
+    public void removeGame(String gameCode) {
+        games.remove(gameCode);
+    }
 }
