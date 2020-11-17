@@ -197,60 +197,6 @@ button:hover, input:hover, select:hover {
     display: none;
 }
 
-#pregame-update-num-players-container {
-    margin: 1rem;
-}
-
-#pregame-update-num-label {
-    color: white;
-    font-size: 1.5rem;
-}
-
-#pregame-update-num-input {
-    font-size: 1.1rem;
-}
-
-#pregame-update-characters-container {
-    width: 100%;
-    height: fit-content;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.pregame-update-character-image {
-    width: 18vmin;
-    height: 18vmin;
-    border: 2px solid white;
-    margin: .2rem .1rem;
-}
-
-.pregame-update-character-image:hover {
-    cursor: pointer;
-}
-
-.active-pregame-update-character {
-    filter: invert(100%);
-    border: 2px solid blue;
-}
-
-#pregame-update-characters-warning {
-    margin: 1rem 0;
-    color: white;
-    height: 3.3rem;
-}
-
-#pregame-update-game-button {
-    width: 100%;
-    padding: .8rem;
-    height: 3.3rem;
-    margin: 1rem 0;
-    border-radius: .2rem;
-    font-size: 1.5rem;
-    display: none;
-}
-
 
 /*
     PRE GAME
@@ -397,6 +343,60 @@ button:hover, input:hover, select:hover {
     justify-content: space-evenly;
     align-items: center;
     background-color: rgb(0, 0, 0);
+    display: none;
+}
+
+#pregame-update-num-players-container {
+    margin: 1rem;
+}
+
+#pregame-update-num-label {
+    color: white;
+    font-size: 1.5rem;
+}
+
+#pregame-update-num-input {
+    font-size: 1.1rem;
+}
+
+#pregame-update-characters-container {
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.pregame-update-character-image {
+    width: 18vmin;
+    height: 18vmin;
+    border: 2px solid white;
+    margin: .2rem .1rem;
+}
+
+.pregame-update-character-image:hover {
+    cursor: pointer;
+}
+
+.active-pregame-update-character {
+    filter: invert(100%);
+    border: 2px solid blue;
+}
+
+#pregame-update-characters-warning {
+    margin: 1rem 0;
+    color: white;
+    height: 3.3rem;
+}
+
+#pregame-update-game-button {
+    width: 100%;
+    padding: .8rem;
+    height: 3.3rem;
+    margin: 1rem 0;
+    border-radius: .2rem;
+    font-size: 1.5rem;
     display: none;
 }
 

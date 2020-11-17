@@ -9,6 +9,82 @@ var $pregameLobby;
 var $game;
 var $night;
 
+var cards = {
+    'DOPPELGANGER': {
+        'picture': 'resources/characters/doppelganger.png',
+        'nightAbility': `Look at another player's card and become that character`,
+        'special': 'N/A',
+        'turn': doppelgangerTurn(),
+        'secondTurn': doppelgangerSecondTurn()
+    },
+    'WEREWOLF': {
+        'picture': 'resources/characters/werewolf.png',
+        'nightAbility': 'View other werewolves',
+        'special': 'N/A',
+        'turn': werewolfTurn()
+    },
+    'MINION': {
+        'picture': 'resources/characters/minion.png',
+        'nightAbility': 'View the werewolves',
+        'special': 'If Minion dies and no Werewolves die, Minion wins',
+        'turn': minionTurn()
+    },
+    'MASON': {
+        'picture': 'resources/characters/mason.png',
+        'nightAbility': 'View other Mason',
+        'special': 'N/A',
+        'turn': masonTurn()
+    },
+    'SEER': {
+        'picture': 'resources/characters/seer.png',
+        'nightAbility': `Look at one player's card or two center cards`,
+        'special': 'N/A',
+        'turn': seerTurn()
+    },
+    'ROBBER': {
+        'picture': 'resources/characters/robber.png',
+        'nightAbility': 'Swap cards with another player and view new card',
+        'special': 'Becomes team of new card',
+        'turn': robberTurn()
+    },
+    'TROUBLEMAKER': {
+        'picture': 'resources/characters/troublemaker.png',
+        'nightAbility': `Swap two player's cards`,
+        'special': 'N/A',
+        'turn': troublemakerTurn()
+    },
+    'DRUNK': {
+        'picture': 'resources/characters/drunk.png',
+        'nightAbility': 'Swap with a center card without viewing new card',
+        'special': 'N/A',
+        'turn': drunkTurn()
+    },
+    'INSOMNIAC': {
+        'picture': 'resources/characters/insomniac.png',
+        'nightAbility': 'Views own card',
+        'special': 'N/A',
+        'turn': insomniacTurn()
+    },
+    'HUNTER': {
+        'picture': 'resources/characters/hunter.png',
+        'nightAbility': 'N/A',
+        'special': 'If Hunter dies, the player they point at also dies',
+        'turn': hunterTurn()
+    },
+    'TANNER': {
+        'picture': 'resources/characters/tanner.png',
+        'nightAbility': 'N/A',
+        'special': 'Tanner only wins if they die',
+        'turn': tannerTurn()
+    },
+    'VILLAGER': {
+        'picture': 'resources/characters/villager.png',
+        'nightAbility': 'N/A',
+        'special': 'N/A',
+        'turn': villagerTurn()
+    }
+}
+
 $(document).ready( () => {
 
     $landing = $('#landing-container');
