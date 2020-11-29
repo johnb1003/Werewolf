@@ -168,6 +168,12 @@ $(document).ready( () => {
     $(window).resize( () => {
         resizeLanding();
     });
+
+    generateCardHTML('WEREWOLF');
+
+    $('.game-card').click( (e) => {
+        $(e.target).parent().toggleClass('is-flipped');
+    });
 });
 
 function resizeLanding() {
@@ -339,6 +345,11 @@ function createOrJoinGame(newGame, username, characters, joinCode) {
                     dealCards(character);
                     break;
                 }
+
+                case 'doTurn': {
+                    doTurn(currGame);
+                    break;
+                }
             }
         
         }
@@ -423,6 +434,9 @@ function createOrJoinGame(newGame, username, characters, joinCode) {
 
         function dealCards(character) {
             currCharacter = character;
+            $pregameLobby.css('display', 'none');
+            generateCardHTML(character);
+            $game.css('display', 'flex')
             console.log(`My character: ${currCharacter}`);
         }
 
@@ -504,4 +518,61 @@ function createCharacterContainerHTML(containerPrefix) {
     <img src="resources/characters/insomniac.png" alt="Insomniac character image" class="${containerPrefix}-character-image INSOMNIAC" id="${containerPrefix}-insomniac-1">
     <img src="resources/characters/hunter.png" alt="Hunter character image" class="${containerPrefix}-character-image HUNTER" id="${containerPrefix}-hunter-1">
     <img src="resources/characters/tanner.png" alt="Tanner character image" class="${containerPrefix}-character-image TANNER" id="${containerPrefix}-tanner-1">`
+}
+
+function generateCardHTML(character) {
+    $('#game-view-card-owner').text(`John's card`);
+    $('.game-card-face-front').attr('src', `resources/characters/${character.toLowerCase()}.png`);
+}
+
+function doppelgangerTurn() {
+
+}
+
+function doppelgangerSecondTurn() {
+    
+}
+
+function werewolfTurn() {
+    
+}
+
+function minionTurn() {
+    
+}
+
+function masonTurn() {
+    
+}
+
+function seerTurn() {
+    
+}
+
+function robberTurn() {
+    
+}
+
+function troublemakerTurn() {
+    
+}
+
+function drunkTurn() {
+    
+}
+
+function insomniacTurn() {
+    
+}
+
+function hunterTurn() {
+    
+}
+
+function tannerTurn() {
+    
+}
+
+function villagerTurn() {
+    
 }
