@@ -87,6 +87,16 @@ public class Game {
         return true;
     }
 
+    public int numPlayersReady() {
+        int sum=0;
+        for(int i=0; i<this.players.size(); i++) {
+            if(this.players.get(i).isReady()) {
+                sum++;
+            }
+        }
+        return sum;
+    }
+
     public void unreadyAll() {
         for(int i=0; i<this.players.size(); i++) {
             this.players.get(i).setReady(false);

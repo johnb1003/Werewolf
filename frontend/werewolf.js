@@ -169,11 +169,7 @@ $(document).ready( () => {
         resizeLanding();
     });
 
-    generateCardHTML('WEREWOLF');
-
-    $('.game-card').click( (e) => {
-        $(e.target).parent().toggleClass('is-flipped');
-    });
+    //generateCardHTML('WEREWOLF');
 });
 
 function resizeLanding() {
@@ -346,6 +342,17 @@ function createOrJoinGame(newGame, username, characters, joinCode) {
                     break;
                 }
 
+                case 'playersReadyUpdate': {
+                    let numReady = response['numReady'];
+                    playersReadyUpdate(numReady);
+                    break;
+                }
+
+                case 'nightTime': {
+                    nightTime();
+                    break;
+                }
+
                 case 'doTurn': {
                     doTurn(currGame);
                     break;
@@ -440,6 +447,10 @@ function createOrJoinGame(newGame, username, characters, joinCode) {
             console.log(`My character: ${currCharacter}`);
         }
 
+        function playersReadyUpdate(numReady) {
+            $('#game-view-card-ready-waiting').text(`${numReady}/${currGame.players.length} players ready`);
+        }
+
         function nightTime() {
             $createGame.css('display', 'none');
             $game.css('display', 'none');
@@ -489,6 +500,26 @@ function createOrJoinGame(newGame, username, characters, joinCode) {
             $('#pregame-update-settings-container').css('display', 'none');
             $('#pregame-leave-button').css('display', 'block');
             $('#pregame-back-to-lobby-button').css('display', 'none');
+        });
+
+        $('.game-card').click( (e) => {
+            $(e.target).parent().toggleClass('is-flipped');
+            if(currGame.pregame === true) {
+                $('#game-view-card-ready-tap-to-view').css('display', 'none');
+                $('#game-view-card-ready-button').css('display', 'block');
+                currGame.pregame = false;
+            }
+        });
+
+        $('#game-view-card-ready-button').click( () => {
+            console.log("Click");
+            console.log();
+            if(currGame.live === false) {
+                $('#game-view-card-ready-button').css('display', 'none');
+                $('#game-view-card-ready-waiting').css('display', 'block');
+                stompClient.send(`/app/game/${currGame.gameCode}/ready`, {}, {});
+                currGame.live = true;
+            }
         });
     },
     (error) => {

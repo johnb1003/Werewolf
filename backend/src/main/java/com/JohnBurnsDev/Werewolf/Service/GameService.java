@@ -149,38 +149,16 @@ public class GameService {
         // All players readied up
         if(GameList.getInstance().getGames().get(gameCode).allReady()) {
             GameList.getInstance().getGames().get(gameCode).unreadyAll();
-            // Pregame => Deal cards
-            if(GameList.getInstance().getGames().get(gameCode).isPregame()) {
-                // Deal cards
-                GameList.getInstance().getGames().get(gameCode).dealCards();
-                ArrayList<Player> players = GameList.getInstance().getGames().get(gameCode).getPlayers();
-                for (int i=0; i < players.size(); i++) {
-                    HashMap dealCards = new HashMap();
-                    dealCards.put("type", "dealCards");
-                    dealCards.put("character", players.get(i).getCharacter());
-
-                    String playerID = players.get(i).getSessionID();
-                    SimpMessageHeaderAccessor headerAccessor = SimpMessageHeaderAccessor
-                            .create(SimpMessageType.MESSAGE);
-                    headerAccessor.setSessionId(playerID);
-                    headerAccessor.setLeaveMutable(true);
-
-                    messagingTemplate.convertAndSendToUser(playerID, "/topic/player",
-                            dealCards, headerAccessor.getMessageHeaders());
-                }
-                GameList.getInstance().getGames().get(gameCode).setPregame(false);
-            }
-            // All players viewed cards
-            else if(GameList.getInstance().getGames().get(gameCode).cardsDealt()) {
-                // Start night time
-            }
+            HashMap nightTime = new HashMap();
+            nightTime.put("type", "nightTime");
+            messagingTemplate.convertAndSend("/topic/game/"+gameCode, nightTime);
         }
         else {
             // Update all clients
-            HashMap pregameUpdate = new HashMap();
-            pregameUpdate.put("type", "pregameUpdate");
-            pregameUpdate.put("game", GameList.getInstance().getGames().get(gameCode));
-            messagingTemplate.convertAndSend("/topic/game/"+gameCode, pregameUpdate);
+            HashMap playersReadyUpdate = new HashMap();
+            playersReadyUpdate.put("type", "playersReadyUpdate");
+            playersReadyUpdate.put("numReady", GameList.getInstance().getGames().get(gameCode).numPlayersReady());
+            messagingTemplate.convertAndSend("/topic/game/"+gameCode, playersReadyUpdate);
         }
     }
 }

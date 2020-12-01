@@ -52,7 +52,7 @@ button:hover, input:hover, select:hover {
 
 #werewolf-title {
     font-size: 4rem;
-    color: rgb(252, 252, 252);
+    color: white;
 }
 
 #landing-connect-container {
@@ -140,7 +140,7 @@ button:hover, input:hover, select:hover {
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-    border: 2px solid green;
+    background-color: rgb(59, 59, 59);
     display: none;
 }
 
@@ -162,7 +162,7 @@ button:hover, input:hover, select:hover {
     height: fit-content;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
 }
 
@@ -188,7 +188,7 @@ button:hover, input:hover, select:hover {
 }
 
 #create-game-button {
-    width: 100%;
+    width: 95%;
     padding: .8rem;
     height: 3.3rem;
     margin: 1rem 0;
@@ -211,7 +211,7 @@ button:hover, input:hover, select:hover {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    border: 2px solid green;
+    background-color: rgb(59, 59, 59);
     display: none;
 }
 
@@ -222,6 +222,7 @@ button:hover, input:hover, select:hover {
     left: 0;
     margin-top: -1.5rem;
     background-color: transparent;
+    color: rgb(150, 150, 150);
 }
 
 #pregame-leave-button:hover {
@@ -235,6 +236,7 @@ button:hover, input:hover, select:hover {
     left: 0;
     margin-top: -1.5rem;
     background-color: transparent;
+    color: rgb(150, 150, 150);
     display: none;
 }
 
@@ -248,6 +250,7 @@ button:hover, input:hover, select:hover {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    color: white;
 }
 
 #pregame-players-container {
@@ -258,12 +261,13 @@ button:hover, input:hover, select:hover {
     justify-content: space-evenly;
     align-items: center;
     overflow: scroll;
-    border: 2px solid blue;
+    background-color: rgb(116, 116, 116);
 }
 
 .pregame-player {
     font-size: 1.5rem;
     margin: .3rem;
+    color: #FBFF1F;
 }
 
 #pregame-bottom-container {
@@ -342,7 +346,7 @@ button:hover, input:hover, select:hover {
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-    background-color: rgb(0, 0, 0);
+    background-color: rgb(59, 59, 59);
     display: none;
 }
 
@@ -364,7 +368,7 @@ button:hover, input:hover, select:hover {
     height: fit-content;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
 }
 
@@ -411,7 +415,7 @@ button:hover, input:hover, select:hover {
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-    background-color: rgb(0, 0, 0);
+    background-color: rgb(59, 59, 59);
     display: none;
 }
 
@@ -420,7 +424,7 @@ button:hover, input:hover, select:hover {
     height: fit-content;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
 }
 
@@ -436,31 +440,64 @@ button:hover, input:hover, select:hover {
     border: 2px solid blue;
 }
 
+
 /*
     GAME
 */
+
+
 #game-container {
     width: 100%;
-    height: 100%;
+    height: 100vh;
     display: none;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border: 2px solid green;
 }
 
 #game-view-card-container {
     width: fit-content;
     height: fit-content;
+    min-height: 80vh;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-    border: 2px solid blue;
+    padding: 1rem;
+    background-color: rgb(59, 59, 59);
 }
 
-#game-view-ready-button {
+#game-view-card-owner {
+    color: white;
+}
 
+#game-view-card-below {
+    width: 100%;
+}
+
+#game-view-card-below-ready {
+    height: 2rem;
+    width: 100%;
+}
+
+#game-view-card-ready-tap-to-view {
+    height: 100%;
+}
+
+#game-view-card-ready-button {
+    width: 100%;
+    height: 100%;
+    display: none;
+}
+
+#game-view-card-ready-waiting {
+    height: 100%;
+    display: none;
+    font-size: 1.3rem;
+}
+
+#game-view-card-below-back {
+    display: none;
 }
 
 /*
@@ -468,8 +505,8 @@ button:hover, input:hover, select:hover {
 */
 
 .game-card-container {
-    width: 300px;
-    height: 300px;
+    width: 280px;
+    height: 280px;
     perspective: 600px;
 }
 
@@ -512,6 +549,7 @@ button:hover, input:hover, select:hover {
     border: 5px solid #FBFF1F;
     border-radius: .5em;
     padding: .7rem;
+    box-shadow: 0 0 10px black;
 }
 
 .game-card-face-front {
@@ -532,7 +570,9 @@ button:hover, input:hover, select:hover {
     NIGHT GAME
 */
 #night-container {
-
+    width: 100%;
+    height: 100vh;
+    background-color: black;
 }
 
 @media screen and (max-width: 900px) {
