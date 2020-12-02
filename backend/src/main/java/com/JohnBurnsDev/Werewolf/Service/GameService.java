@@ -152,6 +152,7 @@ public class GameService {
             HashMap nightTime = new HashMap();
             nightTime.put("type", "nightTime");
             messagingTemplate.convertAndSend("/topic/game/"+gameCode, nightTime);
+            //startTurns()
         }
         else {
             // Update all clients

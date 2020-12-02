@@ -573,6 +573,21 @@ button:hover, input:hover, select:hover {
     width: 100%;
     height: 100vh;
     background-color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
+
+#night-light {
+	background: #fbff1fa9;
+	border-radius: 50%;
+	box-shadow: 0 0 10px 3vmin #fbff1fa9;
+	height: 20vmin;
+	width: 20vmin;
+    animation: night-light 7s infinite;
+    backdrop-filter: blur(2px);
 }
 
 @media screen and (max-width: 900px) {
@@ -602,5 +617,17 @@ button:hover, input:hover, select:hover {
 
     #pregame-lobby-stats h1{
         font-size: 1.5rem;
+    }
+}
+
+@keyframes night-light {
+    0% {
+        
+    }
+    50% {
+        transform: scale(2);
+    }
+    100% {
+        transform: scale(1);
     }
 }
