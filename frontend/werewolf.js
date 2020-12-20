@@ -275,7 +275,8 @@ function createOrJoinGame(newGame, username, characters, joinCode) {
             'characters': characters, 
             'pregame': true,
             'cardsDealt': false,
-            'isLive': false
+            'isLive': false,
+            'turnNum': 0
         }
 
         personalSub = stompClient.subscribe(`/user/topic/player`, async (response) => {
@@ -354,7 +355,7 @@ function createOrJoinGame(newGame, username, characters, joinCode) {
                 }
 
                 case 'doTurn': {
-                    doTurn(currGame);
+                    doTurn(currGame, response);
                     break;
                 }
             }
@@ -457,6 +458,10 @@ function createOrJoinGame(newGame, username, characters, joinCode) {
             $landing.css('display', 'none');
             $pregameLobby.css('display', 'none');
             $night.css('display', 'flex');
+        }
+
+        function doTurn(game, turn) {
+            
         }
 
         $('#pregame-nonhost-settings-button').click( () => {

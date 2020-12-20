@@ -1,8 +1,11 @@
 package com.JohnBurnsDev.Werewolf.Model;
 
+import com.JohnBurnsDev.Werewolf.Comparator.PlayerComparator;
 import org.springframework.lang.Nullable;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.stream.Collectors;
 
 public class Game {
     @Nullable
@@ -17,6 +20,7 @@ public class Game {
     private boolean pregame;
     private boolean cardsDealt;
     private boolean isLive;
+    private int turnNum;
 
     public Game() {
 
@@ -153,6 +157,7 @@ public class Game {
         this.setMiddleCards(tempCards.toArray(new CharacterType[0]));
         this.pregame = false;
         this.cardsDealt = true;
+        Collections.sort(this.players, new PlayerComparator());
     }
 
     public boolean isFull() {
@@ -165,5 +170,27 @@ public class Game {
 
     public void setLive(boolean live) {
         isLive = live;
+    }
+
+    public int getTurnNum() {
+        return turnNum;
+    }
+
+    public void setTurnNum(int turnNum) {
+        this.turnNum = turnNum;
+    }
+
+    public CharacterType getCharacterBySessionID(String sessionID) {
+        for(int i=0; i<this.players.size(); i++) {
+            if(this.players.get(i).getSessionID() == sessionID) {
+                return this.players.get(i).getCharacter();
+            }
+        }
+        return null;
+    }
+
+    public ArrayList<Player> getPlayersByTurnNum(int turn) {
+        CharacterType character = this.players.get(turn).getCharacter();
+        return new ArrayList(this.players.stream().map((player) -> player.getCharacter() == character).collect(Collectors.toList()));
     }
 }

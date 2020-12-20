@@ -152,7 +152,7 @@ public class GameService {
             HashMap nightTime = new HashMap();
             nightTime.put("type", "nightTime");
             messagingTemplate.convertAndSend("/topic/game/"+gameCode, nightTime);
-            //startTurns()
+            firstTurn(gameCode);
         }
         else {
             // Update all clients
@@ -161,5 +161,28 @@ public class GameService {
             playersReadyUpdate.put("numReady", GameList.getInstance().getGames().get(gameCode).numPlayersReady());
             messagingTemplate.convertAndSend("/topic/game/"+gameCode, playersReadyUpdate);
         }
+    }
+
+    public void firstTurn(String gameCode) {
+        ArrayList<Player> players = GameList.getInstance().getGames().get(gameCode).getPlayersByTurnNum(0);
+        players.forEach((player) -> {
+            SimpMessageHeaderAccessor headerAccessor = SimpMessageHeaderAccessor
+                    .create(SimpMessageType.MESSAGE);
+            headerAccessor.setSessionId(player.getSessionID());
+            headerAccessor.setLeaveMutable(true);
+
+            HashMap doTurn = new HashMap();
+            doTurn.put("type", "doTurn");
+            doTurn.put("character", player.getCharacter());
+            doTurn.put("turnNum", 1);
+            doTurn.put("secondaryCharacter", null);
+            messagingTemplate.convertAndSendToUser(player.getSessionID(), "/topic/player",
+                    doTurn, headerAccessor.getMessageHeaders());
+        });
+    }
+
+    public void nextTurn(String gameCode) {
+        int turnNum = GameList.getInstance().getGames().get(gameCode).getTurnNum();
+        ArrayList<Player> players = GameList.getInstance().getGames().get(gameCode).getPlayersByTurnNum(turnNum);
     }
 }

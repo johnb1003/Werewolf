@@ -1,8 +1,9 @@
 package com.JohnBurnsDev.Werewolf.Model;
 
+import com.JohnBurnsDev.Werewolf.Storage.GameList;
 import org.springframework.lang.Nullable;
 
-public class Player {
+public class Player{
     private String username;
     @Nullable
     private String sessionID;
